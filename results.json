@@ -1,0 +1,192 @@
+{
+  "config": {
+    "configFile": "D:\\Automation Stuff\\PlaywrightTestRepo\\playwright.config.js",
+    "rootDir": "D:/Automation Stuff/PlaywrightTestRepo/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2,
+      "totalTime": 11122.914999999999
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/Automation Stuff/PlaywrightTestRepo/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/Automation Stuff/PlaywrightTestRepo/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 10000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.37.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "SaPortaltest.spec.js",
+      "file": "SaPortaltest.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CPL tests",
+          "file": "SaPortaltest.spec.js",
+          "line": 118,
+          "column": 6,
+          "specs": [
+            {
+              "title": "HelperMethods Tests",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 10000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 7072,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "I am in test\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-01-17T10:27:29.224Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43cf44ebf01cc565a6b1-040d9c60f909fe836098",
+              "file": "SaPortaltest.spec.js",
+              "line": 129,
+              "column": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "StrafeFeeItemsTests.spec.js",
+      "file": "StrafeFeeItemsTests.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "STRAFE Fee Items Test",
+          "file": "StrafeFeeItemsTests.spec.js",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "itemsFees_37229",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 10000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "status": "failed",
+                      "duration": 5523,
+                      "error": {
+                        "message": "page.goto: net::ERR_UNEXPECTED at https://test_automation:mh6QP.9T)W%5EC*$Z)37%3D*3-r.S5tqw@qa-strafe.sisco.stewart.net/\n=========================== logs ===========================\nnavigating to \"https://test_automation:mh6QP.9T)W%5EC*$Z)37%3D*3-r.S5tqw@qa-strafe.sisco.stewart.net/\", waiting until \"load\"\n============================================================",
+                        "stack": "Error: page.goto: net::ERR_UNEXPECTED at https://test_automation:mh6QP.9T)W%5EC*$Z)37%3D*3-r.S5tqw@qa-strafe.sisco.stewart.net/\n=========================== logs ===========================\nnavigating to \"https://test_automation:mh6QP.9T)W%5EC*$Z)37%3D*3-r.S5tqw@qa-strafe.sisco.stewart.net/\", waiting until \"load\"\n============================================================\n    at LoginPage.navigate (D:\\Automation Stuff\\PlaywrightTestRepo\\pom\\pageObjects\\login.page.js:20:21)\n    at D:\\Automation Stuff\\PlaywrightTestRepo\\tests\\StrafeFeeItemsTests.spec.js:27:21",
+                        "location": {
+                          "file": "D:\\Automation Stuff\\PlaywrightTestRepo\\pom\\pageObjects\\login.page.js",
+                          "column": 21,
+                          "line": 20
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\pom\\pageObjects\\login.page.js:20\n\n\u001b[0m \u001b[90m 18 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 19 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m     \u001b[36masync\u001b[39m navigate(){\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 21 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNAVIGATION_URL\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 23 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Automation Stuff\\PlaywrightTestRepo\\pom\\pageObjects\\login.page.js",
+                            "column": 21,
+                            "line": 20
+                          },
+                          "message": "Error: page.goto: net::ERR_UNEXPECTED at https://test_automation:mh6QP.9T)W%5EC*$Z)37%3D*3-r.S5tqw@qa-strafe.sisco.stewart.net/\n=========================== logs ===========================\nnavigating to \"https://test_automation:mh6QP.9T)W%5EC*$Z)37%3D*3-r.S5tqw@qa-strafe.sisco.stewart.net/\", waiting until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m..\\pom\\pageObjects\\login.page.js:20\n\n\u001b[0m \u001b[90m 18 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 19 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m     \u001b[36masync\u001b[39m navigate(){\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 21 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNAVIGATION_URL\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 23 |\u001b[39m\u001b[0m\n\n\u001b[2m    at LoginPage.navigate (D:\\Automation Stuff\\PlaywrightTestRepo\\pom\\pageObjects\\login.page.js:20:21)\u001b[22m\n\u001b[2m    at D:\\Automation Stuff\\PlaywrightTestRepo\\tests\\StrafeFeeItemsTests.spec.js:27:21\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-01-17T10:27:29.233Z",
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Automation Stuff\\PlaywrightTestRepo\\test-results\\StrafeFeeItemsTests-STRAFE-Fee-Items-Test-itemsFees-37229-chromium\\video.webm"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Automation Stuff\\PlaywrightTestRepo\\test-results\\StrafeFeeItemsTests-STRAFE-Fee-Items-Test-itemsFees-37229-chromium\\test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Automation Stuff\\PlaywrightTestRepo\\pom\\pageObjects\\login.page.js",
+                        "column": 21,
+                        "line": 20
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "32d55a1d4a45128629d3-fb118c8077df5ee6c6df",
+              "file": "StrafeFeeItemsTests.spec.js",
+              "line": 30,
+              "column": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,128 @@
+#Your build pipeline references an undefined variable named ‘Parameters.workingDirectory’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘Parameters.workingDir’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+parameters:
+  - name: EnvName
+    displayName: Environment Name
+    type: string
+    default: QA
+    values:
+      - QA
+      - UAT
+      - PROD
+      - CDNE PROD
+  - name: SUITE_NAME
+    displayName: Suite Name
+    type: string
+    default: test:all
+    values:
+      - test:all
+      - smoke
+      - regression
+      - scripting
+      - DocumentImage
+      - naman
+      - ReferenceStarter
+      - DirectStarter
+      - PolicySearch
+      - PolicyAddressSearch
+      - AssessmentAPNSearch
+      - PolicyAPNSearch
+      - PolicyLegalSearch
+      - TC_246559_Excel
+      - TC_243783_Excel
+  - name: ZOOM_IN_PERCENTAGE
+    displayName: Zoom In Percentage
+    type: string
+    default: 100%
+    values:
+      - 100%
+      - 125%
+      - 150%
+  - name: SCREEN_WIDTH
+    displayName: Screen Width
+    type: string
+    default: 1500
+    values:
+      - 1920
+      - 1500
+      - 900
+  - name: SCREEN_HEIGHT
+    displayName: Screen Height
+    type: string
+    default: 720
+    values:
+      - 1080
+      - 1024
+      - 720
+
+variables:
+  # CI: true
+  EnvName: ${{parameters.EnvName}}
+  SUITE_NAME: ${{parameters.SUITE_NAME}}
+
+schedules:
+  - cron: "0 5 * * MON,THU"
+    displayName: Daily midnight build
+    branches:
+      include:
+        - develop
+    always: true
+
+stages:
+  - stage: build
+    displayName: Build
+    jobs:
+      - job:  Node_Install
+        displayName: Build1
+        timeoutInMinutes: 700 # how long to run the job before automatically cancelling
+        pool:
+          name: AutomationTestExecution
+        steps:
+          - task: UseNode@1
+            displayName: "Node v18.16 Installation"
+            inputs:
+              version: "18.16"
+          - task: Npm@1
+            displayName: "Install Node.js"
+            inputs:
+              command: 'install'
+          - script: npm ci
+            displayName: 'Install NPM packages'
+          - script: |
+              npx playwright install --with-deps
+            displayName: "Install Playwright Browsers"
+          - script: |
+              cd $(Build.SourcesDirectory)
+              npm run $(SUITE_NAME)
+            displayName: "Run Playwright tests"
+            env:
+              CI: 'true'
+          - publish: '$(System.DefaultWorkingDirectory)/playwright-report'
+            artifact: playwright-report
+            condition: always()
+          - task: PublishTestResults@2
+            displayName: "Publishing Test Results on ADO"
+            condition: succeededOrFailed()
+            inputs:
+              testRunner: JUnit
+              testResultsFiles: '$(System.DefaultWorkingDirectory)/results.xml'
+          - task: CopyFiles@2
+            displayName: "Copy Html Report"
+            condition: succeededOrFailed()
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)/playwright-report'
+              Contents: '**' # string. Required. Contents. Default: **.
+              TargetFolder: '\\TXHOUAPP976\Automation Reports\SPECTR\PWExecutions' 
+              CleanTargetFolder: true
+              ignoreMakeDirErrors: true 
+          - task: CopyFiles@2
+            displayName: "Copy Screenshots"
+            condition: succeededOrFailed()
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)/Screenshots'
+              Contents: '**' # string. Required. Contents. Default: **.
+              TargetFolder: '\\TXHOUAPP976\Automation Reports\SPECTR\Screenshots' 
+              CleanTargetFolder: true
+              ignoreMakeDirErrors: true 
+              OverWrite: true

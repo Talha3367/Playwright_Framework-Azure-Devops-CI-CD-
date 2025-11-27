@@ -1,0 +1,37 @@
+{
+  "name": "secondattempt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.37.1",
+    "allure-playwright": "^2.0.0-beta.16",
+    "wd": "^1.14.0",
+    "axios": "^1.6.5",
+    "dotenv": "^16.0.1",
+    "fs-extra": "^11.2.0"
+  },
+  "scripts": {
+    "Smoke": "npx playwright test --grep \"@smoke\" --project=chromium",
+    "Regression": "npx playwright test --grep \"@regression\" --project=chromium",
+
+    "Master": "npx playwright test --project=chromium",
+
+    "report": "npx playwright show-report",
+    "scripting": "npx playwright test --grep \"@testing\" --project=chromium",
+    "clear": "node .\\Utils\\clearDirectory.mjs",
+    
+    "test": "npm run clear && npm run scripting",
+    "test:all": "npm run clear && npm run Master",
+    
+    "smoke": "npm run clear && npm run Smoke",
+    "regression": "npm run clear && npm run Regression"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "dotenv": "^16.0.1"
+  }
+}
