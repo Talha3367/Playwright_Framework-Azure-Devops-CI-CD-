@@ -34,9 +34,9 @@ export const AppConfig = {
   get BaseURL() {
     switch (this.EnvName.toLowerCase()) {
       case 'qa':
-        return "https://icqa.intellixcore.one/";
+        return "example.com";
       case 'prod':
-        return "https://ic.intellixcore.one/";
+        return "example.com";
       default:
         return "";
     }
@@ -45,7 +45,7 @@ export const AppConfig = {
   get UserName() {
     switch (this.EnvName.toLowerCase()) {
       case 'qa':
-        return "talha.sharif@Intellixcore.com";
+        return "username.com";
       case 'prod':
         return "";
       default:
@@ -56,9 +56,9 @@ export const AppConfig = {
   get Password() {
     switch (this.EnvName.toLowerCase()) {
       case 'qa':
-        return "Talha3367#";
+        return "userpassword";
       case 'prod':
-        return "Talha3367#";
+        return "";
       default:
         return "";
     }
